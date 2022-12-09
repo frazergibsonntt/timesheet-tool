@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "ts-node",
+      "program": "${workspaceFolder}/node_modules/.bin/ts-node",
+      "args": ["${fileDirname}/${fileBasename}"],
+      "console": "integratedTerminal",
+      "cwd": "${fileDirname}"
+    }
+  ]
+}

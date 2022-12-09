@@ -1,21 +1,20 @@
 import * as webdriver from 'selenium-webdriver';
+import * as check_version from './checkVersions';
 import { config } from './config';
 
-
-
-
-let driver: webdriver.ThenableWebDriver;
-
-driver = new webdriver.Builder()
-    .withCapabilities(webdriver.Capabilities.chrome())
-    .build();
-// maximizing chrome browser
-driver.manage().window().maximize();
 
 async function RunTest() {
     let Url: string = config.host;
 
     try{
+        await check_version.compareVersions()
+        let driver: webdriver.ThenableWebDriver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .withCapabilities(webdriver.Capabilities.chrome())
+            .build();;
+
+        // maximizing chrome browser
+        await driver.manage().window().maximize();
         await driver.get(Url)
         let userBox = await driver.findElement(webdriver.By.name('sap-user'));
         await userBox.sendKeys(config.username);
@@ -27,7 +26,6 @@ async function RunTest() {
 
         let timeCapture = await driver.findElement(webdriver.By.className('begin')).click();
 
-        // nwbc
         
     } catch(e) {
         console.log(e)
@@ -36,8 +34,8 @@ async function RunTest() {
     }
 }
 
-function closeWindow() {
-        driver.quit();
-    };
-
+// function closeWindow() {
+//     driver.quit();
+// };
+// downloadDriver()
 RunTest()
