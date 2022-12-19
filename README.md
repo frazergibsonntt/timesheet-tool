@@ -38,10 +38,10 @@ chromedriver: /usr/local/bin/chromedriver
 
 Add a cronjob
 crontab -e
-Every Friday at 11:30
-30 11 * * 5  cd /Users/GIBSOF/typescript-examples/ && export PATH=/Users/GIBSOF/.nvm/versions/node/v16.15.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Users/GIBSOF/.nvm/versions/node/v16.15.1/bin:/Users/GIBSOF/go/bin:/Users/GIBSOF/go/bin:/Users/GIBSOF/.nvm/versions/node/v16.15.1/bin && node dist/selenium-sap-timesheets.js
+Every Wednesday at 11:30
 
-30 11 * * 5  cd /Users/GIBSOF/typescript-examples/ && export PATH=/Users/GIBSOF/.nvm/versions/node/v16.15.1/bin:/Users/GIBSOF/timesheet-tool/node_modules/webdriver-manager/bin && node dist/selenium-sap-timesheets.js
+30 11 * * 3  cd $HOME/timesheet-tool/ && export PATH=$HOME/.nvm/versions/node/v16.15.1/bin:$HOME/timesheet-tool/bin && node dist/selenium-sap-timesheets.js
+
 
 Check it's been added
 crontab -l
